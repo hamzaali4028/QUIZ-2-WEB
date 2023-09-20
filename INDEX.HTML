@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GPA Calculator</title>
 </head>
 <body>
-    <h1>Hello world</h1>
+    <h1>GPA Calculator</h1>
+    <p>Enter your marks for each subject:</p>
+
+    <table>
+        <tr>
+            <td>Subject 1:</td>
+            <td><input type="number" id="subject1" min="0" max="100"></td>
+        </tr>
+        <tr>
+            <td>Subject 2:</td>
+            <td><input type="number" id="subject2" min="0" max="100"></td>
+        </tr>
+        <tr>
+            <td>Subject 3:</td>
+            <td><input type="number" id="subject3" min="0" max="100"></td>
+        </tr>
+        <tr>
+            <td>Subject 4:</td>
+            <td><input type="number" id="subject4" min="0" max="100"></td>
+        </tr>
+        <tr>
+            <td>Subject 5:</td>
+            <td><input type="number" id="subject5" min="0" max="100"></td>
+        </tr>
+    </table>
+
+    <button onclick="calculateGPA()">Calculate GPA</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateGPA() {
+            const subject1 = parseInt(document.getElementById("subject1").value);
+            const subject2 = parseInt(document.getElementById("subject2").value);
+            const subject3 = parseInt(document.getElementById("subject3").value);
+            const subject4 = parseInt(document.getElementById("subject4").value);
+            const subject5 = parseInt(document.getElementById("subject5").value);
+
+            const totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
+            const averageMarks = totalMarks / 5; // Calculate the average of 5 subjects
+
+            let gpa;
+
+            if (averageMarks >= 85) {
+                gpa = "A+";
+            } else if (averageMarks >= 80) {
+                gpa = "A";
+            } else if (averageMarks >= 70) {
+                gpa = "B+";
+            } else if (averageMarks >= 60) {
+                gpa = "C";
+            } else if (averageMarks >= 55) {
+                gpa = "D+";
+            } else if (averageMarks >= 50) {
+                gpa = "D";
+            } else {
+                gpa = "F (Fail)";
+            }
+
+            document.getElementById("result").textContent = `Your GPA is: ${gpa}`;
+        }
+    </script>
 </body>
 </html>
